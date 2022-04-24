@@ -12,8 +12,6 @@ int	main(int argc, char *argv[])
 	FILE	*input;
 	FILE	*output;
 	float	factor;
-	int		i;
-	char	ch;
 	uint8_t	header[HEADER_SIZE];
 
 	// Check command-line arguments
