@@ -12,9 +12,9 @@ int	main(int argc, char *argv[])
 	FILE	*input;
 	FILE	*output;
 	float	factor;
-	uint8_t	header[HEADER_SIZE];
 	int		i;
 	char	ch;
+	uint8_t	header[HEADER_SIZE];
 
 	// Check command-line arguments
 	if (argc != 4)
@@ -37,18 +37,9 @@ int	main(int argc, char *argv[])
 	}
 	factor = atof(argv[3]);
 	// TODO: Copy header from input file to output file
-	i = 0;
-	while (i < HEADER_SIZE)
-	{
-		header[i] = fgetc(input);
-		i++;
-	}
-	i = 0;
-	while (i < HEADER_SIZE)
-	{
-		fputc(header[i], output);
-		i++;
-	}
+	fread(header, sizeof(u_int8_t), HEADER_SIZE, input);
+	fwrite(header, sizeof(u_int8_t), HEADER_SIZE, output);
+	printf("%s", header);
 	// TODO: Read samples from input file and write updated data to output file
 	// Close files
 	fclose(input);
